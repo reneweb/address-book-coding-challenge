@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 public class AddressBook {
     public List<AddressBookEntry> entries = new ArrayList<AddressBookEntry>();
 
-    public static AddressBook readAddressBookFromFile() {
+    public static AddressBook readAddressBookFromFile(String path) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
