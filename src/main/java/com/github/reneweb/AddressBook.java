@@ -4,13 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -49,9 +45,7 @@ public class AddressBook {
 
     public List<AddressBookEntry> getEntriesByFullName(String firstName, String lastName) {
         if(firstName != null && lastName != null) {
-            return entries.stream()
-                    .filter(e -> e.getFirstName().equals(firstName) && e.getLastName().equals(lastName))
-                    .collect(Collectors.toList());
+            return searchAddressBook(e -> e.getFirstName().equals(firstName) && e.getLastName().equals(lastName));
         } else if(firstName != null) {
             return getEntriesByFirstName(firstName);
         } else if(lastName != null) {
@@ -62,21 +56,15 @@ public class AddressBook {
     }
 
     public List<AddressBookEntry> getEntriesByFirstName(String firstName) {
-        return entries.stream()
-                .filter(e -> e.getFirstName().equals(firstName))
-                .collect(Collectors.toList());
+        return searchAddressBook(e -> e.getFirstName().equals(firstName));
     }
 
     public List<AddressBookEntry> getEntriesByLastName(String lastName) {
-        return entries.stream()
-                .filter(e -> e.getLastName().equals(lastName))
-                .collect(Collectors.toList());
+        return searchAddressBook(e -> e.getLastName().equals(lastName));
     }
 
     public List<AddressBookEntry> filterByGender(AddressBookEntry.Gender gender) {
-        return entries.stream()
-                .filter(e -> e.getGender() == gender)
-                .collect(Collectors.toList());
+        return searchAddressBook(e -> e.getGender() == gender);
     }
 
     public AddressBookEntry getOldestPerson() {

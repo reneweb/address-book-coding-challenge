@@ -3,7 +3,6 @@ package com.github.reneweb;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
 
 /**
  * Created by Rene on 27.08.2014.
