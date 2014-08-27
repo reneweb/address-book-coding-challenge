@@ -62,11 +62,15 @@ public class AddressBook {
     }
 
     public List<AddressBookEntry> getEntriesByFirstName(String firstName) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return entries.stream()
+                .filter(e -> e.getFirstName().equals(firstName))
+                .collect(Collectors.toList());
     }
 
     public List<AddressBookEntry> getEntriesByLastName(String lastName) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return entries.stream()
+                .filter(e -> e.getLastName().equals(lastName))
+                .collect(Collectors.toList());
     }
 
     public List<AddressBookEntry> filterByGender(AddressBookEntry.Gender gender) {
