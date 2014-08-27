@@ -86,7 +86,7 @@ public class AddressBook {
     }
 
     public List<AddressBookEntry> searchAddressBook(Predicate<AddressBookEntry> predicate) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return entries.stream().filter(predicate).collect(Collectors.toList());
     }
 
     //----- Getters and Setters -----
