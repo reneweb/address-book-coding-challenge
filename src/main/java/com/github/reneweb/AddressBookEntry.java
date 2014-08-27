@@ -25,8 +25,12 @@ public class AddressBookEntry {
         this.dob = dob;
     }
 
-    public Period ageDifferenceFrom(AddressBookEntry from) {
-        return this.getDob().until(from.getDob());
+    /**
+     * Returns how much older this entry is to the given one
+     * @return The period is positive if the passed entry is older otherwise it is negative
+     */
+    public Period periodBetweenDob(AddressBookEntry otherEntry) {
+        return this.getDob().until(otherEntry.getDob());
     }
 
     public static Gender getGenderFromString(String gender) {
@@ -36,6 +40,7 @@ public class AddressBookEntry {
     public static LocalDate getDateFromString(String date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy");
         LocalDate resultDate = LocalDate.parse(date, formatter);
+        //Adjust the century
         if(resultDate.isAfter(LocalDate.now())) resultDate = resultDate.minusYears(100);
         return resultDate;
     }

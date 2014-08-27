@@ -73,6 +73,9 @@ public class AddressBook {
                 .get();
     }
 
+    /**
+     * Returns entries based on the given predicate
+     */
     public List<AddressBookEntry> searchAddressBook(Predicate<AddressBookEntry> predicate) {
         return entries.stream().filter(predicate).collect(Collectors.toList());
     }
