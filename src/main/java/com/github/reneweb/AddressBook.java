@@ -35,7 +35,6 @@ public class AddressBook {
                 .map(String::trim)
                 .collect(Collectors.toList());
 
-
         return new AddressBookEntry(
                 parsedLine.get(0),
                 parsedLine.get(1),
