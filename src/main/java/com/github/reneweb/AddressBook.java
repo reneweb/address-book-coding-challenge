@@ -80,7 +80,9 @@ public class AddressBook {
     }
 
     public AddressBookEntry getOldestPerson() {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return entries.stream()
+                .min( (e1, e2) -> e1.getDob().compareTo(e2.getDob()))
+                .get();
     }
 
     public List<AddressBookEntry> searchAddressBook(Predicate<AddressBookEntry> predicate) {
