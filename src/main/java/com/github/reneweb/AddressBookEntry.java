@@ -2,6 +2,8 @@ package com.github.reneweb;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
 
 /**
  * Created by Rene on 27.08.2014.
@@ -26,6 +28,17 @@ public class AddressBookEntry {
 
     public Period ageDifferenceFrom(AddressBookEntry from) {
         throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public static Gender getGenderFromString(String gender) {
+        return Gender.valueOf(gender.toUpperCase());
+    }
+
+    public static LocalDate getDateFromString(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy");
+        LocalDate resultDate = LocalDate.parse(date, formatter);
+        if(resultDate.isAfter(LocalDate.now())) resultDate = resultDate.minusYears(100);
+        return resultDate;
     }
 
     //----- Getters and Setters -----
