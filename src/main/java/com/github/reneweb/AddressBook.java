@@ -42,8 +42,4 @@ public class AddressBook {
     public List<AddressBookEntry> getEntries() {
         return entries;
     }
-
-    public void setEntries(List<AddressBookEntry> entries) {
-        this.entries = entries;
-    }
 }
