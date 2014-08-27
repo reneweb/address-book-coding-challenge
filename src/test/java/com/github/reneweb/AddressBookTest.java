@@ -9,49 +9,70 @@ import static org.junit.Assert.*;
 public class AddressBookTest {
     private String addressBookFilePath = "AddressBook";
 
-    @Test
-    public void testReadAddressBookFromFile() throws Exception {
+    @Test //readAddressBookFromFile
+    public void shouldReadTheAddressBookFile() throws Exception {
         AddressBook addressBook = AddressBook.readAddressBookFromFile(addressBookFilePath);
         assertTrue(addressBook.getEntries().size() == 5);
     }
 
-    @Test
-    public void testGetEntriesByFullName() throws Exception {
+    @Test //getEntriesByFullName
+    public void shouldReturnMatchingEntriesByFullName() throws Exception {
         AddressBook addressBook = AddressBook.readAddressBookFromFile(addressBookFilePath);
         List<AddressBookEntry> entries = addressBook.getEntriesByFullName("Bill", "McKnight");
         assertTrue(entries.size() == 1);
     }
 
-    @Test
-    public void testGetEntriesByFirstName() throws Exception {
+    @Test //getEntriesByFullName
+    public void shouldReturnMatchingEntriesByFirstNameIfOnlyFirstNameGiven() throws Exception {
+        AddressBook addressBook = AddressBook.readAddressBookFromFile(addressBookFilePath);
+        List<AddressBookEntry> entries = addressBook.getEntriesByFullName("Bill", null);
+        assertTrue(entries.size() == 1);
+    }
+
+    @Test //getEntriesByFullName
+    public void shouldReturnMatchingEntriesByLastNameIfOnlyLastNameGiven() throws Exception {
+        AddressBook addressBook = AddressBook.readAddressBookFromFile(addressBookFilePath);
+        List<AddressBookEntry> entries = addressBook.getEntriesByFullName(null, "Bill");
+        assertTrue(entries.size() == 1);
+    }
+
+    @Test //getEntriesByFullName
+    public void shouldReturnAllEntriesIfNoNameIsGiven() throws Exception {
+        AddressBook addressBook = AddressBook.readAddressBookFromFile(addressBookFilePath);
+        List<AddressBookEntry> entries = addressBook.getEntriesByFullName(null, "Bill");
+        assertTrue(entries.size() == 1);
+    }
+
+    @Test //getEntriesByFirstName
+    public void shouldReturnMatchingEntriesByFirstName() throws Exception {
         AddressBook addressBook = AddressBook.readAddressBookFromFile(addressBookFilePath);
         List<AddressBookEntry> entries = addressBook.getEntriesByFirstName("Bill");
         assertTrue(entries.size() == 1);
     }
 
-    @Test
-    public void testGetEntriesByLastName() throws Exception {
+    @Test //getEntriesByLastName
+    public void shouldReturnMatchingEntriesByLastName() throws Exception {
         AddressBook addressBook = AddressBook.readAddressBookFromFile(addressBookFilePath);
         List<AddressBookEntry> entries = addressBook.getEntriesByLastName("McKnight");
         assertTrue(entries.size() == 1);
     }
 
-    @Test
-    public void testFilterByGender() throws Exception {
+    @Test //filterByGender
+    public void shouldReturnEntriesOfGivenGender() throws Exception {
         AddressBook addressBook = AddressBook.readAddressBookFromFile(addressBookFilePath);
         List<AddressBookEntry> entries = addressBook.filterByGender(AddressBookEntry.Gender.MALE);
         assertTrue(entries.size() == 3);
     }
 
-    @Test
-    public void testGetOldestPerson() throws Exception {
+    @Test //getOldestPerson
+    public void shouldReturnOldestPerson() throws Exception {
         AddressBook addressBook = AddressBook.readAddressBookFromFile(addressBookFilePath);
         AddressBookEntry entry = addressBook.getOldestPerson();
         assertTrue(entry.getFirstName().equals("Wes") && entry.getLastName().equals("Jackson"));
     }
 
-    @Test
-    public void testSearchAddressBook() throws Exception {
+    @Test //searchAddressBook
+    public void shouldSearchAddressBookByPredicate() throws Exception {
         AddressBook addressBook = AddressBook.readAddressBookFromFile(addressBookFilePath);
         List<AddressBookEntry> entries = addressBook.searchAddressBook(entry -> entry.getFirstName().equals("Wes"));
         assertTrue(entries.size() == 1);
