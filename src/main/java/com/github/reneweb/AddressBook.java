@@ -48,7 +48,17 @@ public class AddressBook {
     }
 
     public List<AddressBookEntry> getEntriesByFullName(String firstName, String lastName) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if(firstName != null && lastName != null) {
+            return entries.stream()
+                    .filter(e -> e.getFirstName().equals(firstName) && e.getLastName().equals(lastName))
+                    .collect(Collectors.toList());
+        } else if(firstName != null) {
+            return getEntriesByFirstName(firstName);
+        } else if(lastName != null) {
+            return getEntriesByLastName(lastName);
+        } else {
+            return getEntries();
+        }
     }
 
     public List<AddressBookEntry> getEntriesByFirstName(String firstName) {
