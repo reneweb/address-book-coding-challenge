@@ -26,8 +26,8 @@ public class AddressBookEntry {
     }
 
     /**
-     * Returns how much older this entry is to the given one
-     * @return The period is positive if the passed entry is older otherwise it is negative
+     * Returns how much younger/older this entry is to the given one
+     * @return The period is positive if the passed person is younger otherwise it is negative
      */
     public Period periodBetweenDob(AddressBookEntry otherEntry) {
         return this.getDob().until(otherEntry.getDob());
