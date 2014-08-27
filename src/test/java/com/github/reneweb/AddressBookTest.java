@@ -32,15 +32,15 @@ public class AddressBookTest {
     @Test //getEntriesByFullName
     public void shouldReturnMatchingEntriesByLastNameIfOnlyLastNameGiven() throws Exception {
         AddressBook addressBook = AddressBook.readAddressBookFromFile(addressBookFilePath);
-        List<AddressBookEntry> entries = addressBook.getEntriesByFullName(null, "Bill");
+        List<AddressBookEntry> entries = addressBook.getEntriesByFullName(null, "McKnight");
         assertTrue(entries.size() == 1);
     }
 
     @Test //getEntriesByFullName
     public void shouldReturnAllEntriesIfNoNameIsGiven() throws Exception {
         AddressBook addressBook = AddressBook.readAddressBookFromFile(addressBookFilePath);
-        List<AddressBookEntry> entries = addressBook.getEntriesByFullName(null, "Bill");
-        assertTrue(entries.size() == 1);
+        List<AddressBookEntry> entries = addressBook.getEntriesByFullName(null, null);
+        assertTrue(entries.size() == 5);
     }
 
     @Test //getEntriesByFirstName
