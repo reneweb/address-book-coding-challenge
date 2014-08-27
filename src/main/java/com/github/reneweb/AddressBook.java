@@ -8,7 +8,7 @@ import java.util.function.Predicate;
  * Created by Rene on 27.08.2014.
  */
 public class AddressBook {
-    public List<AddressBookEntry> entries = new ArrayList<AddressBookEntry>();
+    private List<AddressBookEntry> entries = new ArrayList<AddressBookEntry>();
 
     public static AddressBook readAddressBookFromFile(String path) {
         throw new UnsupportedOperationException("Not yet implemented");
@@ -34,7 +34,16 @@ public class AddressBook {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    public List<AddressBookEntry> searchAddressBook(Predicate<AddressBook> predicate) {
+    public List<AddressBookEntry> searchAddressBook(Predicate<AddressBookEntry> predicate) {
         throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    //----- Getters and Setters -----
+    public List<AddressBookEntry> getEntries() {
+        return entries;
+    }
+
+    public void setEntries(List<AddressBookEntry> entries) {
+        this.entries = entries;
     }
 }
