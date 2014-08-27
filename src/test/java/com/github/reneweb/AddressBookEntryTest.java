@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class AddressBookEntryTest {
 
-    @Test
+    @Test //ageDifferenceFrom
     public void shouldReturnTheAgeDifference() throws Exception {
         AddressBookEntry firstEntry = new AddressBookEntry("Test", "Test", AddressBookEntry.Gender.MALE, LocalDate.of(1970, 1, 1));
         AddressBookEntry secondEntry = new AddressBookEntry("Test", "Test", AddressBookEntry.Gender.MALE, LocalDate.of(1980, 1, 1));
