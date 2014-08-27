@@ -74,7 +74,9 @@ public class AddressBook {
     }
 
     public List<AddressBookEntry> filterByGender(AddressBookEntry.Gender gender) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return entries.stream()
+                .filter(e -> e.getGender() == gender)
+                .collect(Collectors.toList());
     }
 
     public AddressBookEntry getOldestPerson() {
