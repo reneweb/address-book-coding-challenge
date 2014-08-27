@@ -27,7 +27,7 @@ public class AddressBookEntry {
     }
 
     public Period ageDifferenceFrom(AddressBookEntry from) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return this.getDob().until(from.getDob());
     }
 
     public static Gender getGenderFromString(String gender) {
